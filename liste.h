@@ -17,5 +17,6 @@ struct Liste
 Liste *initialisation();
 void insertion(Liste *liste, int nvNombre);
 void suppression(Liste *liste);
+void afficher(Liste *Liste);
 
 #endif

@@ -5,8 +5,15 @@
 int main(int argc, char *argv[])
 {
     Liste *liste = initialisation();
+
     insertion(liste, 10);
+    insertion(liste, 15);
+    insertion(liste, 2);
+    afficher(liste);
     suppression(liste);
+    afficher(liste);
+
+    return 0;
 }
 
 Liste *initialisation()
@@ -54,4 +61,21 @@ void suppression(Liste *liste)
         liste->premier = aSupprimer->suivant;
         free(aSupprimer);
     }
+}
+
+void afficher(Liste *liste)
+{
+    if (liste == NULL)
+    {
+        exit(EXIT_FAILURE);
+    }
+
+    Element *actuel = liste->premier;
+
+    while (actuel != NULL)
+    {
+        printf("%d -> ", actuel->nombre);
+        actuel = actuel->suivant;
+    }
+    printf("NULL\n");
 }
