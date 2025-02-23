@@ -16,4 +16,6 @@ struct Liste
 
 Liste *initialisation();
 
+void insertion(Liste *liste, int nvNombre);
+
 #endif

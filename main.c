@@ -5,6 +5,7 @@
 int main(int argc, char *argv[])
 {
     Liste *liste = initialisation();
+    insertion(liste, 10);
 }
 
 Liste *initialisation()
@@ -22,4 +23,19 @@ Liste *initialisation()
     liste->premier = element;
 
     return liste;
+}
+
+void insertion(Liste *liste, int nvNombre)
+{
+    // Création d'un nouvel élément
+    Element *nouveau = malloc(sizeof(*nouveau));
+    if (liste == NULL || nouveau == NULL)
+    {
+        exit(EXIT_FAILURE);
+    }
+    nouveau->nombre = nvNombre;
+
+    // Insertion de l'élément au début de la liste
+    nouveau->suivant = liste->premier;
+    liste->premier = nouveau;
 }
