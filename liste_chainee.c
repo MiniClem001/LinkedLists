@@ -9,7 +9,9 @@ Liste *initialisation(void)
 
     if (liste == NULL || element == NULL)
     {
-        exit(EXIT_FAILURE);
+        free(liste);
+        free(element);
+        return NULL;
     }
 
     element->nombre = 0;
@@ -19,28 +21,49 @@ Liste *initialisation(void)
     return liste;
 }
 
-void insertion(Liste *liste, int nvNombre)
+int insertion(Liste *liste, int nvNombre)
 {
     // Création d'un nouvel élément
     Element *nouveau = (Element *)malloc(sizeof(*nouveau));
+
     if (liste == NULL || nouveau == NULL)
     {
-        exit(EXIT_FAILURE);
+        free(nouveau);
+        return ERREUR_ALLOCATION;
     }
     nouveau->nombre = nvNombre;
 
     // Insertion de l'élément au début de la liste
     nouveau->suivant = liste->premier;
     liste->premier = nouveau;
+
+    return SUCCESS;
 }
 
-void insertion_milieu(Liste *liste, int nvNombre, int position)
+int insertion_milieu(Liste *liste, int nvNombre, int position)
 {
     // Création d'un nouvel élément
+    Element *nouveau = (Element *)malloc(sizeof(*nouveau));
+
+    if (nouveau == NULL)
+    {
+        return ERREUR_ALLOCATION;
+    }
 
     // Recherche de l'élément auquel ajouter le nouveau après
+    Element *element = liste->premier;
+
+    for (int i = 0; i < position; i++)
+    {
+        if (element->suivant == NULL)
+        {
+            return ERREUR_POSITION;
+        }
+    }
 
     // Insertion du nouvel élément
+
+    return SUCCESS;
 }
 
 void suppression(Liste *liste)
@@ -65,8 +88,7 @@ void afficher(Liste *liste)
         exit(EXIT_FAILURE);
     }
 
-    Element *actuel;
-    actuel = liste->premier;
+    Element *actuel = liste->premier;
 
     while (actuel != NULL)
     {
