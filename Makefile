@@ -1,25 +1,36 @@
 CC = clang
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -Iinclude
 LDFLAGS = -L.
 
 SRC = src/liste_chainee.c
 OBJ = $(SRC:.c=.o)
 TARGET = libliste_chainee.a
 
-all: $(TARGET)
+EXAMPLE_SRC = examples/example_usage.c
+EXAMPLE_OBJ = $(EXAMPLE_SRC:.c=.o)
+EXAMPLE_TARGET = example_usage
+
+all: $(TARGET) example
 
 $(TARGET): $(OBJ)
-	@echo "Creating library $@ with $^"
-	ar rcs $@ $^
+	@echo "TARGET: Creating library $@ with $<"
+	ar rcs $@ $<
 
 $(OBJ): $(SRC)
 	@echo "Compiling $< to $@"
 	$(CC) $(CFLAGS) -c $< -o $@
 
-examples: examples/examples.c $(TARGET)
-	$(CC) $(CFLAGS) -o $@.out $< $(LDFLAGS) -lliste_chainee
+example: $(EXAMPLE_TARGET) $(TARGET)
+	@echo "EXAMPLE_TARGET :"
+	./$(EXAMPLE_TARGET)
+
+$(EXAMPLE_TARGET): $(EXAMPLE_OBJ)
+	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS) -lliste_chainee
+
+$(EXAMPLE_OBJ): $(EXAMPLE_SRC)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -f $(OBJ) $(TARGET) $(EXAMPLE_TARGET) $(EXAMPLE_OBJ)
 
-.PHONY: all clean
+.PHONY: all clean example

@@ -9,6 +9,7 @@ Ceci est une bibliothèque en C pour gérer des listes chaînées. La bibliothè
 - [Utilisation](#utilisation)
 - [Fonctions](#fonctions)
 - [Exemple](#exemple)
+- [Licence](#licence)
 
 ## Fonctionnalités
 
@@ -34,11 +35,13 @@ Pour utiliser cette bibliothèque, vous devez inclure le fichier d'en-tête `lis
    #include "liste_chainee.h"
    ```
 
-3. Compilez votre projet avec le fichier source `liste_chainee.c` :
+3. Utilisez le Makefile pour compiler la bibliothèque et l'exemple :
 
    ```sh
-   gcc -o mon_programme mon_programme.c liste_chainee.c
+   make
    ```
+
+   Cela générera la bibliothèque statique `libliste_chainee.a` et l'exemple `example_usage`.
 
 ## Utilisation
 
@@ -110,4 +113,4 @@ int main(int argc, char *argv[])
 
 ## Licence
 
-Ce projet est sous licence GPL-3.0. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+Ce projet est sous licence GPL-3.0. Voir le fichier [LICENSE](LICENSE.txt) pour plus de détails.
