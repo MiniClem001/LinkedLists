@@ -42,6 +42,25 @@ int insertion(Liste *liste, int nvNombre)
 
 int insertion_milieu(Liste *liste, int nvNombre, int position)
 {
+    if (position < 0)
+    {
+        return LISTE_CHAINEE_ERREUR_POSITION;
+    }
+
+    // Recherche de l'élément auquel ajouter le nouveau après
+    Element *actuel = liste->premier;
+    Element *precedent = NULL;
+
+    for (int i = 0; i < position; i++)
+    {
+        if (actuel->suivant == NULL)
+        {
+            return LISTE_CHAINEE_ERREUR_POSITION;
+        }
+        precedent = actuel;
+        actuel = actuel->suivant;
+    }
+
     // Création d'un nouvel élément
     Element *nouveau = (Element *)malloc(sizeof(*nouveau));
 
@@ -50,18 +69,11 @@ int insertion_milieu(Liste *liste, int nvNombre, int position)
         return LISTE_CHAINEE_ERREUR_ALLOCATION;
     }
 
-    // Recherche de l'élément auquel ajouter le nouveau après
-    Element *element = liste->premier;
-
-    for (int i = 0; i < position; i++)
-    {
-        if (element->suivant == NULL)
-        {
-            return LISTE_CHAINEE_ERREUR_POSITION;
-        }
-    }
+    nouveau->nombre = nvNombre;
 
     // Insertion du nouvel élément
+    precedent->suivant = nouveau;
+    nouveau->suivant = actuel;
 
     return LISTE_CHAINEE_SUCCESS;
 }
