@@ -107,3 +107,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 ```
+
+## Licence
+
+Ce projet est sous licence GPL-3.0. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
