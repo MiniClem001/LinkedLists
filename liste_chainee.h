@@ -1,9 +1,9 @@
-#ifndef LISTE_H
-#define LISTE_H
+#ifndef LISTE_CHAINEE_H
+#define LISTE_CHAINEE_H
 
-#define ERREUR_ALLOCATION -1
-#define ERREUR_POSITION -2
-#define SUCCESS 0
+#define LISTE_CHAINEE_ERREUR_ALLOCATION -1
+#define LISTE_CHAINEE_ERREUR_POSITION -2
+#define LISTE_CHAINEE_SUCCESS 0
 
 typedef struct Element Element;
 typedef struct Liste Liste;

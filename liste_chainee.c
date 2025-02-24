@@ -29,7 +29,7 @@ int insertion(Liste *liste, int nvNombre)
     if (liste == NULL || nouveau == NULL)
     {
         free(nouveau);
-        return ERREUR_ALLOCATION;
+        return LISTE_CHAINEE_ERREUR_ALLOCATION;
     }
     nouveau->nombre = nvNombre;
 
@@ -37,7 +37,7 @@ int insertion(Liste *liste, int nvNombre)
     nouveau->suivant = liste->premier;
     liste->premier = nouveau;
 
-    return SUCCESS;
+    return LISTE_CHAINEE_SUCCESS;
 }
 
 int insertion_milieu(Liste *liste, int nvNombre, int position)
@@ -47,7 +47,7 @@ int insertion_milieu(Liste *liste, int nvNombre, int position)
 
     if (nouveau == NULL)
     {
-        return ERREUR_ALLOCATION;
+        return LISTE_CHAINEE_ERREUR_ALLOCATION;
     }
 
     // Recherche de l'élément auquel ajouter le nouveau après
@@ -57,13 +57,13 @@ int insertion_milieu(Liste *liste, int nvNombre, int position)
     {
         if (element->suivant == NULL)
         {
-            return ERREUR_POSITION;
+            return LISTE_CHAINEE_ERREUR_POSITION;
         }
     }
 
     // Insertion du nouvel élément
 
-    return SUCCESS;
+    return LISTE_CHAINEE_SUCCESS;
 }
 
 void suppression(Liste *liste)
