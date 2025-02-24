@@ -1,3 +1,10 @@
+/**
+ * @file liste_chainee.c
+ * @brief Implementation of the linked list library.
+ * @author Clément Giraud-Sauveur
+ * @date 24/02/2025
+ */
+
 #include "liste_chainee.h"
 #include <stdio.h>
 #include <stdlib.h>
