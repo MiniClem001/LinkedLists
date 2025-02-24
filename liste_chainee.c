@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-Liste *initialisation()
+Liste *initialisation(void)
 {
-    Liste *liste = malloc(sizeof(*liste));
-    Element *element = malloc(sizeof(*element));
+    Liste *liste = (Liste *)malloc(sizeof(*liste));
+    Element *element = (Element *)malloc(sizeof(*element));
 
     if (liste == NULL || element == NULL)
     {
@@ -22,7 +22,7 @@ Liste *initialisation()
 void insertion(Liste *liste, int nvNombre)
 {
     // Création d'un nouvel élément
-    Element *nouveau = malloc(sizeof(*nouveau));
+    Element *nouveau = (Element *)malloc(sizeof(*nouveau));
     if (liste == NULL || nouveau == NULL)
     {
         exit(EXIT_FAILURE);
@@ -32,6 +32,15 @@ void insertion(Liste *liste, int nvNombre)
     // Insertion de l'élément au début de la liste
     nouveau->suivant = liste->premier;
     liste->premier = nouveau;
+}
+
+void insertion_milieu(Liste *liste, int nvNombre, int position)
+{
+    // Création d'un nouvel élément
+
+    // Recherche de l'élément auquel ajouter le nouveau après
+
+    // Insertion du nouvel élément
 }
 
 void suppression(Liste *liste)
@@ -56,7 +65,8 @@ void afficher(Liste *liste)
         exit(EXIT_FAILURE);
     }
 
-    Element *actuel = liste->premier;
+    Element *actuel;
+    actuel = liste->premier;
 
     while (actuel != NULL)
     {
