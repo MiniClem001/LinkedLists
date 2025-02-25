@@ -1,4 +1,4 @@
-# Linked List Library
+# Linked Lists Library
 
 This is a C library to manage linked lists. The library provides functions to initialize, insert, delete, and display elements in a linked list.
 
@@ -21,7 +21,7 @@ This is a C library to manage linked lists. The library provides functions to in
 
 ## Installation
 
-To use this library, you need to include the `linked_chain.h` header file in your project and link the `linked_chain.c` source file.
+To use this library, you need to include the `linked_lists.h` header file in your project and link the `linked_lists.c` source file.
 
 1. Clone the repository:
 
@@ -32,7 +32,7 @@ To use this library, you need to include the `linked_chain.h` header file in you
 2. Include the header file in your project:
 
    ```c
-   #include "linked_chain.h"
+   #include "linked_lists.h"
    ```
 
 3. Use the Makefile to compile the library and the example:
@@ -41,7 +41,7 @@ To use this library, you need to include the `linked_chain.h` header file in you
    make
    ```
 
-   This will generate the static library `liblinked_chain.a` and the example `example_usage`.
+   This will generate the static library `liblinked_lists.a` and the example `example_usage`.
 
 ## Usage
 
@@ -55,23 +55,23 @@ To use the library, follow these steps:
 
 ## Functions
 
-### `List *linked_chain_init(void)`
+### `List *linked_lists_init(void)`
 
 Initializes and returns a new linked list.
 
-### `int linked_chain_insert(List *list, int newNumber)`
+### `int linked_lists_insert(List *list, int newNumber)`
 
 Inserts a new element with the value `newNumber` at the beginning of the list.
 
-### `int linked_chain_insert_middle(List *list, int newNumber, int position)`
+### `int linked_lists_insert_middle(List *list, int newNumber, int position)`
 
 Inserts a new element with the value `newNumber` at the specified position in the list.
 
-### `void linked_chain_delete(List *list)`
+### `void linked_lists_delete(List *list)`
 
 Deletes the first element of the list.
 
-### `void linked_chain_display(List *list)`
+### `void linked_lists_display(List *list)`
 
 Displays the elements of the list.
 
@@ -82,30 +82,30 @@ Here is an example of using the library:
 ```c
 #include <stdio.h>
 #include <stdlib.h>
-#include "linked_chain.h"
+#include "linked_lists.h"
 
 int main(void)
 {
-    List *list = linked_chain_init();
+    List *list = linked_lists_init(void);
 
     // Insert elements into the list
     printf("Adding elements 10, 15, 22, 55 and 2 to the list\n");
-    linked_chain_insert(list, 10);
-    linked_chain_insert(list, 15);
-    linked_chain_insert(list, 22);
-    linked_chain_insert(list, 55);
-    linked_chain_insert(list, 2);
-    linked_chain_display(list);
+    linked_lists_insert(list, 10);
+    linked_lists_insert(list, 15);
+    linked_lists_insert(list, 22);
+    linked_lists_insert(list, 55);
+    linked_lists_insert(list, 2);
+    linked_lists_display(list);
 
     // Delete the first element
     printf("Deleting the first element of the list\n");
-    linked_chain_delete(list);
-    linked_chain_display(list);
+    linked_lists_delete(list);
+    linked_lists_display(list);
 
     // Insert an element at a specific position
     printf("Inserting the element 30 in 3rd position from the end\n");
-    linked_chain_insert_middle(list, 30, 3);
-    linked_chain_display(list);
+    linked_lists_insert_middle(list, 30, 3);
+    linked_lists_display(list);
 
     return 0;
 }
