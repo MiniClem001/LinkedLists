@@ -1,116 +1,116 @@
-# Bibliothèque de Liste Chaînée
+# Linked List Library
 
-Ceci est une bibliothèque en C pour gérer des listes chaînées. La bibliothèque fournit des fonctions pour initialiser, insérer, supprimer et afficher des éléments dans une liste chaînée.
+This is a C library to manage linked lists. The library provides functions to initialize, insert, delete, and display elements in a linked list.
 
-## Table des Matières
+## Table of Contents
 
-- [Fonctionnalités](#fonctionnalités)
+- [Features](#features)
 - [Installation](#installation)
-- [Utilisation](#utilisation)
-- [Fonctions](#fonctions)
-- [Exemple](#exemple)
-- [Licence](#licence)
+- [Usage](#usage)
+- [Functions](#functions)
+- [Example](#example)
+- [License](#license)
 
-## Fonctionnalités
+## Features
 
-- Initialiser une liste chaînée.
-- Insérer des éléments au début de la liste.
-- Insérer des éléments à une position spécifique dans la liste.
-- Supprimer le premier élément de la liste.
-- Afficher les éléments de la liste.
+- Initialize a linked list.
+- Insert elements at the beginning of the list.
+- Insert elements at a specific position in the list.
+- Delete the first element of the list.
+- Display the elements of the list.
 
 ## Installation
 
-Pour utiliser cette bibliothèque, vous devez inclure le fichier d'en-tête `liste_chainee.h` dans votre projet et lier le fichier source `liste_chainee.c`.
+To use this library, you need to include the `linked_chain.h` header file in your project and link the `linked_chain.c` source file.
 
-1. Clonez le dépôt :
+1. Clone the repository:
 
    ```sh
-   git clone https://github.com/votreutilisateur/bibliotheque-liste-chainee.git
+   git clone https://github.com/yourusername/linked-list-library.git
    ```
 
-2. Incluez le fichier d'en-tête dans votre projet :
+2. Include the header file in your project:
 
    ```c
-   #include "liste_chainee.h"
+   #include "linked_chain.h"
    ```
 
-3. Utilisez le Makefile pour compiler la bibliothèque et l'exemple :
+3. Use the Makefile to compile the library and the example:
 
    ```sh
    make
    ```
 
-   Cela générera la bibliothèque statique `libliste_chainee.a` et l'exemple `example_usage`.
+   This will generate the static library `liblinked_chain.a` and the example `example_usage`.
 
-## Utilisation
+## Usage
 
-Pour utiliser la bibliothèque, suivez ces étapes :
+To use the library, follow these steps:
 
-1. Initialisez la liste chaînée.
-2. Insérez des éléments dans la liste.
-3. Affichez la liste.
-4. Supprimez des éléments de la liste.
-5. Insérez des éléments à une position spécifique.
+1. Initialize the linked list.
+2. Insert elements into the list.
+3. Display the list.
+4. Delete elements from the list.
+5. Insert elements at a specific position.
 
-## Fonctions
+## Functions
 
-### `Liste *initialisation(void)`
+### `List *linked_chain_init(void)`
 
-Initialise et retourne une nouvelle liste chaînée.
+Initializes and returns a new linked list.
 
-### `int insertion(Liste *liste, int nvNombre)`
+### `int linked_chain_insert(List *list, int newNumber)`
 
-Insère un nouvel élément avec la valeur `nvNombre` au début de la liste.
+Inserts a new element with the value `newNumber` at the beginning of the list.
 
-### `int insertion_milieu(Liste *liste, int nvNombre, int position)`
+### `int linked_chain_insert_middle(List *list, int newNumber, int position)`
 
-Insère un nouvel élément avec la valeur `nvNombre` à la position spécifiée dans la liste.
+Inserts a new element with the value `newNumber` at the specified position in the list.
 
-### `void suppression(Liste *liste)`
+### `void linked_chain_delete(List *list)`
 
-Supprime le premier élément de la liste.
+Deletes the first element of the list.
 
-### `void afficher(Liste *liste)`
+### `void linked_chain_display(List *list)`
 
-Affiche les éléments de la liste.
+Displays the elements of the list.
 
-## Exemple
+## Example
 
-Voici un exemple d'utilisation de la bibliothèque :
+Here is an example of using the library:
 
 ```c
 #include <stdio.h>
 #include <stdlib.h>
-#include "liste_chainee.h"
+#include "linked_chain.h"
 
-int main(int argc, char *argv[])
+int main(void)
 {
-    Liste *liste = initialisation();
+    List *list = linked_chain_init();
 
-    // Insérer des éléments dans la liste
-    printf("Ajout des éléments 10, 15, 22, 55 et 2 à la liste\n");
-    insertion(liste, 10);
-    insertion(liste, 15);
-    insertion(liste, 22);
-    insertion(liste, 55);
-    insertion(liste, 2);
-    afficher(liste);
+    // Insert elements into the list
+    printf("Adding elements 10, 15, 22, 55 and 2 to the list\n");
+    linked_chain_insert(list, 10);
+    linked_chain_insert(list, 15);
+    linked_chain_insert(list, 22);
+    linked_chain_insert(list, 55);
+    linked_chain_insert(list, 2);
+    linked_chain_display(list);
 
-    // Supprimer le premier élément
-    printf("Suppression du premier élément de la liste\n");
-    suppression(liste);
-    afficher(liste);
+    // Delete the first element
+    printf("Deleting the first element of the list\n");
+    linked_chain_delete(list);
+    linked_chain_display(list);
 
-    // Insérer un élément à une position spécifique
-    printf("Insertion de l'élément 30 en 3ème position en partant de la fin\n");
-    insertion_milieu(liste, 30, 3);
-    afficher(liste);
+    // Insert an element at a specific position
+    printf("Inserting the element 30 in 3rd position from the end\n");
+    linked_chain_insert_middle(list, 30, 3);
+    linked_chain_display(list);
 
     return 0;
 }
 ```
 
-## Licence
+## License
 
-Ce projet est sous licence GPL-3.0. Voir le fichier [LICENSE](LICENSE.txt) pour plus de détails.
+This project is licensed under the GPL-3.0 License. See the [LICENSE](LICENSE.txt) file for details.

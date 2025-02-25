@@ -2,11 +2,11 @@ CC = clang
 CFLAGS = -Wall -Wextra -Werror -Iinclude
 LDFLAGS = -L.
 
-SRC = src/liste_chainee.c
+SRC = $(wildcard src/*.c)
 OBJ = $(SRC:.c=.o)
-TARGET = libliste_chainee.a
+TARGET = liblinked_chain.a
 
-EXAMPLE_SRC = examples/example_usage.c
+EXAMPLE_SRC = $(wildcard examples/*.c)
 EXAMPLE_OBJ = $(EXAMPLE_SRC:.c=.o)
 EXAMPLE_TARGET = example_usage
 
@@ -25,7 +25,7 @@ example: $(EXAMPLE_TARGET) $(TARGET)
 	./$(EXAMPLE_TARGET)
 
 $(EXAMPLE_TARGET): $(EXAMPLE_OBJ)
-	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS) -lliste_chainee
+	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS) -llinked_chain
 
 $(EXAMPLE_OBJ): $(EXAMPLE_SRC)
 	$(CC) $(CFLAGS) -c $< -o $@
