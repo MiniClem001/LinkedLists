@@ -2,7 +2,7 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "Générer les fichiers du projet avec make",
+            "label": "Generate project files with make",
             "command": "make",
             "args": [
             ],
