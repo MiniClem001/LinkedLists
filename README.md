@@ -41,7 +41,7 @@ To use this library, you need to include the `linked_lists.h` header file in you
    make
    ```
 
-   This will generate the static library `liblinked_lists.a` and the example `example_usage`.
+   This will generate the static library `liblinked_lists.a` and the `example` file.
 
 ## Usage
 
