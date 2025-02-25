@@ -4,7 +4,8 @@ LDFLAGS = -L.
 
 SRC = $(wildcard src/*.c)
 OBJ = $(SRC:.c=.o)
-TARGET = liblinked_chain.a
+LIB = $(basename $(notdir $(SRC)))
+TARGET = lib$(LIB).a
 
 EXAMPLE_SRC = $(wildcard examples/*.c)
 EXAMPLE_OBJ = $(EXAMPLE_SRC:.c=.o)
@@ -25,7 +26,7 @@ example: $(EXAMPLE_TARGET) $(TARGET)
 	./$(EXAMPLE_TARGET)
 
 $(EXAMPLE_TARGET): $(EXAMPLE_OBJ)
-	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS) -llinked_chain
+	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS) -l$(LIB)
 
 $(EXAMPLE_OBJ): $(EXAMPLE_SRC)
 	$(CC) $(CFLAGS) -c $< -o $@
