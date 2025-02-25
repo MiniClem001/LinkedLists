@@ -5,22 +5,26 @@ LDFLAGS = -Lbuild
 SRC = $(wildcard src/*.c)
 OBJ = $(patsubst src/%.c, build/obj/%.o, $(SRC))
 LIB = $(basename $(notdir $(SRC)))
-TARGET = lib$(LIB).a
+TARGET = build/lib$(LIB).a
 
 EXAMPLE_SRC = $(wildcard examples/*.c)
 EXAMPLE_OBJ = $(patsubst examples/%.c, build/obj/%.o, $(EXAMPLE_SRC))
-EXAMPLE_TARGET = example
+EXAMPLE_TARGET = build/example
 
-all: $(TARGET) $(EXAMPLE_TARGET)
+all: $(TARGET) example
+	@echo "--== OK ==--"
+
+example: $(EXAMPLE_TARGET)
+	@echo "--== EXAMPLE ==--"
+	@./$(EXAMPLE_TARGET)
 
 $(TARGET): $(OBJ)
 	@echo "--== TARGET ==--"
-	ar rcs build/$@ $<
+	ar rcs $@ $<
 
 $(EXAMPLE_TARGET): $(EXAMPLE_OBJ) $(TARGET)
 	@echo "--== EXAMPLE_TARGET ==--"
-	$(CC) $(CFLAGS) $< -o build/$@ $(LDFLAGS) -l$(LIB)
-	build/$(EXAMPLE_TARGET)
+	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS) -l$(LIB)
 
 $(OBJ): $(SRC)
 	@echo "--== OBJ ==--"
@@ -33,6 +37,7 @@ $(EXAMPLE_OBJ): $(EXAMPLE_SRC)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf ./build/
+	@echo "--== CLEAN ==--"
+	@rm -rf ./build/
 
 .PHONY: all example clean
