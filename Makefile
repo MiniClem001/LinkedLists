@@ -28,12 +28,10 @@ $(EXAMPLE_TARGET): $(EXAMPLE_OBJ) $(TARGET)
 
 $(OBJ): $(SRC)
 	@echo "--== OBJ ==--"
-	mkdir -p build/obj
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(EXAMPLE_OBJ): $(EXAMPLE_SRC)
 	@echo "--== EXAMPLE_OBJ ==--"
-	mkdir -p build/obj
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
