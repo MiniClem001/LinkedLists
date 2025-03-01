@@ -16,24 +16,20 @@
  * @struct Element
  * @brief Represents an element in the linked list.
  */
-typedef struct Element Element;
+typedef struct _element
+{
+    int number;            /** The value of the element. */
+    struct _element *next; /** Pointer to the next element in the list. */
+} Element;
 
 /**
  * @struct List
  * @brief Represents the linked list.
  */
-typedef struct List List;
-
-struct Element
+typedef struct _list
 {
-    int number;    /**< The value of the element. */
-    Element *next; /**< Pointer to the next element in the list. */
-};
-
-struct List
-{
-    Element *first; /**< Pointer to the first element in the list. */
-};
+    Element *first; /** Pointer to the first element in the list. */
+} List;
 
 /**
  * @brief Initializes a new linked list.
@@ -62,7 +58,7 @@ int linked_lists_insert_middle(List *list, int newNumber, int position);
  * @brief Deletes the first element of the list.
  * @param list Pointer to the list.
  */
-void linked_lists_delete(List *list);
+int linked_lists_free(List **p_list);
 
 /**
  * @brief Prints the elements of the list.

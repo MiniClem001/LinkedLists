@@ -79,19 +79,27 @@ int linked_lists_insert_middle(List *list, int newNumber, int position)
     return LINKED_LISTS_SUCCESS;
 }
 
-void linked_lists_delete(List *list)
+int linked_lists_free(List **p_list)
 {
-    if (list == NULL)
+    if (p_list == NULL || *p_list == NULL)
     {
-        exit(EXIT_FAILURE);
+        return LINKED_LISTS_ALLOCATION_ERROR;
     }
 
-    if (list->first != NULL)
+    Element *current = (*p_list)->first;
+    Element *next;
+
+    while (current != NULL)
     {
-        Element *toDelete = list->first;
-        list->first = toDelete->next;
-        free(toDelete);
+        next = current->next;
+        free(current);
+        current = next;
     }
+
+    free(*p_list);
+    *p_list = NULL;
+
+    return LINKED_LISTS_SUCCESS;
 }
 
 void linked_lists_display(List *list)
