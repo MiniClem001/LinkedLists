@@ -46,6 +46,11 @@ int linked_lists_insert(List *list, int newNumber)
     // add a new element
     Element *new = (Element *)malloc(sizeof(*new));
 
+    if (new == NULL)
+    {
+        return LINKED_LISTS_ALLOCATION_ERROR;
+    }
+
     new->number = newNumber;
     new->next = NULL;
     last->next = new;
@@ -146,11 +151,11 @@ int linked_lists_free(List **list)
     return LINKED_LISTS_SUCCESS;
 }
 
-void linked_lists_display(List *list)
+int linked_lists_display(List *list)
 {
     if (list == NULL)
     {
-        exit(EXIT_FAILURE);
+        return LINKED_LISTS_ALLOCATION_ERROR;
     }
 
     Element *current = list->first;
@@ -161,4 +166,6 @@ void linked_lists_display(List *list)
         current = current->next;
     }
     printf("NULL\n");
+
+    return LINKED_LISTS_SUCCESS;
 }

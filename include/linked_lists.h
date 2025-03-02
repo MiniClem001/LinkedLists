@@ -71,6 +71,6 @@ int linked_lists_free(List **list);
  * @brief Prints the elements of the list.
  * @param list Pointer to the list.
  */
-void linked_lists_display(List *list);
+int linked_lists_display(List *list);
 
 #endif
