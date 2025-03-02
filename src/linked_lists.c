@@ -24,6 +24,7 @@ List *linked_lists_init(int number)
     element->number = number;
     element->next = NULL;
     list->first = element;
+    list->last = element;
 
     return list;
 }
@@ -34,21 +35,14 @@ int linked_lists_insert(List *list, int newNumber)
     {
         return LINKED_LISTS_ALLOCATION_ERROR;
     }
-    else if (list->first == NULL)
+    else if (list->last == NULL)
     {
         return LINKED_LISTS_EMPTY_ERROR;
     }
 
-    // find last element of the list
-    Element *last = list->first;
-
-    while (last->next != NULL)
-    {
-        last = last->next;
-    }
-
     // add a new element
     Element *new = (Element *)malloc(sizeof(*new));
+    Element *last = list->last;
 
     if (new == NULL)
     {
@@ -58,6 +52,7 @@ int linked_lists_insert(List *list, int newNumber)
     new->number = newNumber;
     new->next = NULL;
     last->next = new;
+    list->last = new;
 
     return LINKED_LISTS_SUCCESS;
 }
@@ -95,6 +90,10 @@ int linked_lists_insert_after(List *list, int newNumber, int position)
     new->number = newNumber;
     new->next = current->next;
     current->next = new;
+    if (new->next == NULL)
+    {
+        list->last = new;
+    }
 
     return LINKED_LISTS_SUCCESS;
 }
@@ -114,10 +113,11 @@ int linked_lists_remove_last(List *list)
     Element *current = list->first;
     Element *previous = NULL;
 
-    // free current is last last item && set list->first to NULL
+    // free current if last item && set list->first to NULL
     if (current->next == NULL)
     {
         list->first = NULL;
+        list->last = NULL;
         free(current);
 
         return LINKED_LISTS_SUCCESS;
@@ -131,6 +131,7 @@ int linked_lists_remove_last(List *list)
     }
 
     previous->next = NULL;
+    list->last = previous;
     free(current);
 
     return LINKED_LISTS_SUCCESS;
@@ -152,6 +153,9 @@ int linked_lists_free(List **list)
         free(current);
         current = next;
     }
+
+    (*list)->first = NULL;
+    (*list)->last = NULL;
 
     free(*list);
     *list = NULL;
