@@ -47,13 +47,13 @@ List *linked_lists_init(int number);
 int linked_lists_insert(List *list, int newNumber);
 
 /**
- * @brief Inserts a new element at a specified position in the list.
+ * @brief Inserts a new element after a specified position in the list.
  * @param list Pointer to the list.
  * @param newNumber The value of the new element.
  * @param position The position at which to insert the new element.
  * @return LINKED_LISTS_SUCCESS if successful, LINKED_LISTS_ALLOCATION_ERROR if memory allocation fails, LINKED_LISTS_POSITION_ERROR if the position is invalid.
  */
-int linked_lists_insert_middle(List *list, int newNumber, int position);
+int linked_lists_insert_after(List *list, int newNumber, int position);
 
 /**
  * @brief Free the last element of the list.

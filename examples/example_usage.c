@@ -4,11 +4,11 @@
 
 int main(void)
 {
-    printf("Initialize the list with a 3\n");
+    printf("-> Initialize the list with a 3\n");
     List *list = linked_lists_init(3);
 
     // insert elements into the list
-    printf("Adding elements 10, 15, 22, 55 and 2 to the list\n");
+    printf("-> Adding elements 10, 15, 22, 55 and 2 to the list\n");
     linked_lists_insert(list, 10);
     linked_lists_insert(list, 15);
     linked_lists_insert(list, 22);
@@ -17,16 +17,18 @@ int main(void)
     linked_lists_display(list);
 
     // deletion of elements
-    printf("Deleting the last element of the list\n");
+    printf("-> Deleting the two last elements of the list\n");
+    linked_lists_remove(list);
     linked_lists_remove(list);
     linked_lists_display(list);
 
-    // insertion in the middle
-    printf("Inserting the element 30 in 3rd position from the end\n");
-    linked_lists_insert_middle(list, 30, 3);
+    // insertion in the after
+    printf("-> Inserting the element 67 after first element and 30 after 3rd position from the end\n");
+    linked_lists_insert_after(list, 67, 0);
+    linked_lists_insert_after(list, 30, 2);
     linked_lists_display(list);
 
-    printf("Free the list");
+    printf("-> Free the list\n");
     linked_lists_free(&list);
 
     return 0;

@@ -63,9 +63,9 @@ Initializes and returns a new linked list.
 
 Inserts a new element with the value `newNumber` at the beginning of the list.
 
-### `int linked_lists_insert_middle(List *list, int newNumber, int position)`
+### `int linked_lists_insert_after(List *list, int newNumber, int position)`
 
-Inserts a new element with the value `newNumber` at the specified position in the list.
+Inserts a new element with the value `newNumber` after the specified position in the list.
 
 ### `void linked_lists_delete(List *list)`
 
@@ -104,7 +104,7 @@ int main(void)
 
     // Insert an element at a specific position
     printf("Inserting the element 30 in 3rd position from the end\n");
-    linked_lists_insert_middle(list, 30, 3);
+    linked_lists_insert_after(list, 30, 3);
     linked_lists_display(list);
 
     return 0;

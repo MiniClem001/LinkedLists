@@ -2,7 +2,7 @@
  * @file linked_lists.c
  * @brief Implementation of the linked list library.
  * @author Clément Giraud-Sauveur
- * @date 24/02/2025
+ * @date 2025
  */
 
 #include "linked_lists.h"
@@ -53,15 +53,15 @@ int linked_lists_insert(List *list, int newNumber)
     return LINKED_LISTS_SUCCESS;
 }
 
-int linked_lists_insert_middle(List *list, int newNumber, int position)
+int linked_lists_insert_after(List *list, int newNumber, int position)
 {
+    // check invalid position
     if (position < 0)
     {
         return LINKED_LISTS_POSITION_ERROR;
     }
 
     Element *current = list->first;
-    Element *previous = NULL;
 
     for (int i = 0; i < position; i++)
     {
@@ -69,7 +69,6 @@ int linked_lists_insert_middle(List *list, int newNumber, int position)
         {
             return LINKED_LISTS_POSITION_ERROR;
         }
-        previous = current;
         current = current->next;
     }
 
@@ -81,9 +80,8 @@ int linked_lists_insert_middle(List *list, int newNumber, int position)
     }
 
     new->number = newNumber;
-
-    previous->next = new;
-    new->next = current;
+    new->next = current->next;
+    current->next = new;
 
     return LINKED_LISTS_SUCCESS;
 }
