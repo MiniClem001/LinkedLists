@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-List *linked_lists_init(void)
+List *linked_lists_init(int number)
 {
     List *list = (List *)malloc(sizeof(*list));
     Element *element = (Element *)malloc(sizeof(*element));
@@ -21,7 +21,7 @@ List *linked_lists_init(void)
         return NULL;
     }
 
-    element->number = 0;
+    element->number = number;
     element->next = NULL;
     list->first = element;
 
@@ -79,14 +79,51 @@ int linked_lists_insert_middle(List *list, int newNumber, int position)
     return LINKED_LISTS_SUCCESS;
 }
 
-int linked_lists_free(List **p_list)
+int linked_lists_remove(List *list)
 {
-    if (p_list == NULL || *p_list == NULL)
+    if (list == NULL)
     {
         return LINKED_LISTS_ALLOCATION_ERROR;
     }
 
-    Element *current = (*p_list)->first;
+    if (list->first == NULL)
+    {
+        return LINKED_LISTS_EMPTY_ERROR;
+    }
+
+    Element *current = list->first;
+    Element *previous = NULL;
+
+    // free current is last last item && set list->first to NULL
+    if (current->next == NULL)
+    {
+        list->first = NULL;
+        free(current);
+
+        return LINKED_LISTS_SUCCESS;
+    }
+
+    // find last element of the list and free it
+    while (current->next != NULL)
+    {
+        previous = current;
+        current = current->next;
+    }
+
+    previous->next = NULL;
+    free(current);
+
+    return LINKED_LISTS_SUCCESS;
+}
+
+int linked_lists_free(List **list)
+{
+    if (list == NULL || *list == NULL)
+    {
+        return LINKED_LISTS_ALLOCATION_ERROR;
+    }
+
+    Element *current = (*list)->first;
     Element *next;
 
     while (current != NULL)
@@ -96,8 +133,8 @@ int linked_lists_free(List **p_list)
         current = next;
     }
 
-    free(*p_list);
-    *p_list = NULL;
+    free(*list);
+    *list = NULL;
 
     return LINKED_LISTS_SUCCESS;
 }

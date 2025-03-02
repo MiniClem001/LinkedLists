@@ -10,6 +10,7 @@
 
 #define LINKED_LISTS_ALLOCATION_ERROR -1
 #define LINKED_LISTS_POSITION_ERROR -2
+#define LINKED_LISTS_EMPTY_ERROR -3
 #define LINKED_LISTS_SUCCESS 0
 
 /**
@@ -32,13 +33,13 @@ typedef struct _list
 } List;
 
 /**
- * @brief Initializes a new linked list.
+ * @brief Initializes a new linked list with the provided number.
  * @return A pointer to the newly initialized list, or NULL if initialization fails.
  */
-List *linked_lists_init(void);
+List *linked_lists_init(int number);
 
 /**
- * @brief Inserts a new element at the beginning of the list.
+ * @brief Inserts a new element at the end of the list.
  * @param list Pointer to the list.
  * @param newNumber The value of the new element.
  * @return LINKED_LISTS_SUCCESS if successful, LINKED_LISTS_ALLOCATION_ERROR if memory allocation fails.
@@ -55,10 +56,16 @@ int linked_lists_insert(List *list, int newNumber);
 int linked_lists_insert_middle(List *list, int newNumber, int position);
 
 /**
- * @brief Deletes the first element of the list.
+ * @brief Free the last element of the list.
  * @param list Pointer to the list.
  */
-int linked_lists_free(List **p_list);
+int linked_lists_remove(List *list);
+
+/**
+ * @brief Free the list and all it's elements
+ * @param list Pointer to a List*
+ */
+int linked_lists_free(List **list);
 
 /**
  * @brief Prints the elements of the list.
