@@ -30,17 +30,26 @@ List *linked_lists_init(int number)
 
 int linked_lists_insert(List *list, int newNumber)
 {
-    Element *new = (Element *)malloc(sizeof(*new));
-
-    if (list == NULL || new == NULL)
+    if (list == NULL)
     {
-        free(new);
         return LINKED_LISTS_ALLOCATION_ERROR;
     }
-    new->number = newNumber;
 
-    new->next = list->first;
-    list->first = new;
+    // find last element of the list
+    Element *last = list->first;
+
+    while (last->next != NULL)
+    {
+        last = last->next;
+    }
+
+    // add a new element
+    Element *new = (Element *)malloc(sizeof(*new));
+
+    new->number = newNumber;
+    new->next = NULL;
+    last->next = new;
+
     return LINKED_LISTS_SUCCESS;
 }
 
