@@ -4,6 +4,7 @@
 
 int main(void)
 {
+    printf("Initialize the list with a 3\n");
     List *list = linked_lists_init(3);
 
     // insert elements into the list
@@ -26,7 +27,7 @@ int main(void)
     linked_lists_display(list);
 
     printf("Free the list");
-    linked_lists_free(list);
+    linked_lists_free(&list);
 
     return 0;
 }
