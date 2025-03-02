@@ -59,7 +59,7 @@ int linked_lists_insert_after(List *list, int newNumber, int position);
  * @brief Free the last element of the list.
  * @param list Pointer to the list.
  */
-int linked_lists_remove(List *list);
+int linked_lists_remove_last(List *list);
 
 /**
  * @brief Free the list and all it's elements

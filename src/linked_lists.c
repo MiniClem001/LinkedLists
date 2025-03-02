@@ -34,6 +34,10 @@ int linked_lists_insert(List *list, int newNumber)
     {
         return LINKED_LISTS_ALLOCATION_ERROR;
     }
+    else if (list->first == NULL)
+    {
+        return LINKED_LISTS_EMPTY_ERROR;
+    }
 
     // find last element of the list
     Element *last = list->first;
@@ -65,6 +69,10 @@ int linked_lists_insert_after(List *list, int newNumber, int position)
     {
         return LINKED_LISTS_POSITION_ERROR;
     }
+    else if (list == NULL)
+    {
+        return LINKED_LISTS_ALLOCATION_ERROR;
+    }
 
     Element *current = list->first;
 
@@ -91,7 +99,7 @@ int linked_lists_insert_after(List *list, int newNumber, int position)
     return LINKED_LISTS_SUCCESS;
 }
 
-int linked_lists_remove(List *list)
+int linked_lists_remove_last(List *list)
 {
     if (list == NULL)
     {

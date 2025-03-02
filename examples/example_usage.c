@@ -18,8 +18,8 @@ int main(void)
 
     // deletion of elements
     printf("-> Deleting the two last elements of the list\n");
-    linked_lists_remove(list);
-    linked_lists_remove(list);
+    linked_lists_remove_last(list);
+    linked_lists_remove_last(list);
     linked_lists_display(list);
 
     // insertion in the after
