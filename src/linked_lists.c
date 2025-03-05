@@ -25,6 +25,7 @@ List *linked_lists_init(int number)
     element->next = NULL;
     list->first = element;
     list->last = element;
+    list->count = 1;
 
     return list;
 }
@@ -53,6 +54,7 @@ int linked_lists_insert(List *list, int newNumber)
     new->next = NULL;
     last->next = new;
     list->last = new;
+    ++list->count;
 
     return LINKED_LISTS_SUCCESS;
 }
@@ -94,6 +96,7 @@ int linked_lists_insert_after(List *list, int newNumber, int position)
     {
         list->last = new;
     }
+    ++list->count;
 
     return LINKED_LISTS_SUCCESS;
 }
@@ -119,6 +122,7 @@ int linked_lists_remove_last(List *list)
         list->first = NULL;
         list->last = NULL;
         free(current);
+        list->count = 0;
 
         return LINKED_LISTS_SUCCESS;
     }
@@ -133,6 +137,7 @@ int linked_lists_remove_last(List *list)
     previous->next = NULL;
     list->last = previous;
     free(current);
+    --list->count;
 
     return LINKED_LISTS_SUCCESS;
 }

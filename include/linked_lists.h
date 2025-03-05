@@ -31,6 +31,7 @@ typedef struct _list
 {
     Element *first; /** Pointer to the first element in the list. */
     Element *last;  /** Pointer to the last element in the list */
+    int count;      /** Number of Elements in the list */
 } List;
 
 /**

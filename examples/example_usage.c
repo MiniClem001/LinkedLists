@@ -15,18 +15,21 @@ int main(void)
     linked_lists_insert(list, 55);
     linked_lists_insert(list, 2);
     linked_lists_display(list);
+    printf("Count: %d\n", list->count);
 
     // deletion of elements
     printf("-> Deleting the two last elements of the list\n");
     linked_lists_remove_last(list);
     linked_lists_remove_last(list);
     linked_lists_display(list);
+    printf("Count: %d\n", list->count);
 
     // insertion in the after
     printf("-> Inserting the element 67 after first element and 30 after 3rd position from the end\n");
     linked_lists_insert_after(list, 67, 0);
     linked_lists_insert_after(list, 30, 2);
     linked_lists_display(list);
+    printf("Count: %d\n", list->count);
 
     printf("-> Free the list\n");
     linked_lists_free(&list);
