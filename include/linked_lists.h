@@ -2,7 +2,7 @@
  * @file linked_lists.h
  * @brief Library to create and manipulate linked lists.
  * @author Clément Giraud-Sauveur
- * @date 24/02/2025
+ * @date 2025
  */
 
 #ifndef LINKED_LISTS_H
