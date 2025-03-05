@@ -64,13 +64,15 @@ int linked_lists_remove_last(List *list);
 
 /**
  * @brief Free the list and all it's elements
- * @param list Pointer to a List*
+ * @param list Pointer to a List *
+ * @return LINKED_LISTS_SUCCESS if successful, LINKED_LISTS_ALLOCATION_ERROR if memory allocation fails.
  */
 int linked_lists_free(List **list);
 
 /**
  * @brief Prints the elements of the list.
  * @param list Pointer to the list.
+ * @return LINKED_LISTS_SUCCESS if successful, LINKED_LISTS_ALLOCATION_ERROR if memory allocation fails.
  */
 int linked_lists_display(List *list);
 
